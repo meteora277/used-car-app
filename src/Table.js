@@ -1,36 +1,60 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const StyledItem = styled.div`
+import Like from './Like'
 
+const StyledItem = styled.div`
+    
+    display:flex;
+    justify-content:flex-start;
+    font-family: Lexend Deca;
+    font-size: 22px;
+    padding: 0 1.5rem;
+    margin:0;
+
+    p{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 22px;
+        ${props => props.TitleBar ? "color: white; font-size: 14px" : null}
+    }
+    p:nth-child(1), p:nth-child(2), p:nth-child(3){
+        width: 30%;
+        padding-right: 1rem;
+    }
+    
+    ${ props => props.TitleBar && "background-color:#008AD8; border-radius: 0.3rem; "}
+`
+const StyledUl = styled.ul`
+    padding:0;
 `
 
 function Table(props){
 
-    const CarList = props.cars.map(item =>(
-        <StyledItem>
-            
-            <h3>{item.name}</h3>
+    const CarList = props.cars.map((item,i) =>(
+        <StyledItem key={i}>
+            <p>{item.name}</p>
             <p>{item.location}</p>
             <p>{item.price}</p>
-            <div>Like</div>
+            <p><Like Saved={item.liked}/></p>
         </StyledItem>
     ))
     
     return(
         <div>
-            <ul>
-                <StyledItem>
+            <StyledUl>
+                <StyledItem TitleBar>
                     <p>CAR DETAILS</p>
                     <p>LOCATION</p>
                     <p>PRICE</p>
                     <p>ACTION</p>
                 </StyledItem>
-
+                <br/>
                 {CarList}
 
-            </ul>
+            </StyledUl>
         </div>
     )
 }
