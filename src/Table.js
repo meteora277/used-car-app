@@ -28,7 +28,7 @@ const StyledItem = styled.div`
     p:nth-child(2){
         color: #686868;
         font-size:18px;
-        ${ props => props.TitleBar && "color:white;"}
+        ${ props => props.TitleBar && "color:white;font-size:14px;"}
     }
     
     ${ props => props.TitleBar && "background-color:#008AD8; border-radius: 0.3rem; "}
