@@ -10,7 +10,12 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
 
 }
+html{
+  background-color:#f4f4f4;
+}
+
 body{
+
   padding: clamp(1rem, 5vw, 6rem);
 }
 
