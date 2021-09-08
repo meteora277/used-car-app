@@ -4,37 +4,48 @@ import styled from 'styled-components';
 
 import Like from './Like'
 
+
+const StyledColumn = styled.p`
+    
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 22px;
+
+    ${props => props.car && "width: 30%; padding-right: 1rem;"}
+    ${props => props.second && "color: #686868; font-size:18px;"}
+    ${props => props.white && "color:white; font-style: normal; font-weight: normal; font-size: 14px; line-height: 17px;"}
+
+    @media(max-width:450px){
+        
+        width:100%;
+        padding-right:0;
+        ${props => props.price && "display:inline-block; width:90%;"}
+        ${props => props.heart && "display:inline-block; width: 10%;"}
+    }
+`
+
+const StyledUl = styled.ul`
+    padding:0;
+`
+
 const StyledItem = styled.div`
     
     display:flex;
     justify-content:flex-start;
     font-family: Lexend Deca;
-    font-size: 22px;
     padding: 0 1.5rem;
     margin:0;
 
-    p{
-        font-style: normal;
-        font-weight: normal;
-        font-size: 22px;
-        line-height: 22px;
-        ${props => props.TitleBar ? "color: white; font-size: 14px" : null}
-    }
-    p:nth-child(1), p:nth-child(2), p:nth-child(3){
-        width: 30%;
-        padding-right: 1rem;
-    }
+    @media(max-width:450px){
+        display:block;
 
-    p:nth-child(2){
-        color: #686868;
-        font-size:18px;
-        ${ props => props.TitleBar && "color:white;font-size:14px;"}
     }
     
-    ${ props => props.TitleBar && "background-color:#008AD8; border-radius: 0.3rem; "}
-`
-const StyledUl = styled.ul`
-    padding:0;
+    ${props => props.TitleBar && "background-color:#008AD8; border-radius: 0.3rem; color: white"}
+    ${props => props.hidden && "background:blue;"}
+    ${props => props.hidden && "@media(max-width:450px){display:none;}"}
+
 `
 
 function Table(props){
@@ -49,10 +60,10 @@ function Table(props){
 
     const CarList = props.cars.map((item,i) =>(
         <StyledItem key={i}>
-            <p>{item.name}</p>
-            <p>{item.location}</p>
-            <p>${item.price}</p>
-            <p><Like handleClick={handleClick} id={i} Saved={likes[i]}/></p>
+            <StyledColumn car>{item.name}</StyledColumn>
+            <StyledColumn car second>{item.location}</StyledColumn>
+            <StyledColumn car price>${item.price}</StyledColumn>
+            <StyledColumn heart><Like handleClick={handleClick} id={i} Saved={likes[i]}/></StyledColumn>
         </StyledItem>
         
     ))
@@ -60,11 +71,11 @@ function Table(props){
     return(
         <div>
             <StyledUl>
-                <StyledItem TitleBar>
-                    <p>CAR DETAILS</p>
-                    <p>LOCATION</p>
-                    <p>PRICE</p>
-                    <p>ACTION</p>
+                <StyledItem TitleBar hidden>
+                    <StyledColumn car white>CAR DETAILS</StyledColumn>
+                    <StyledColumn car white>LOCATION</StyledColumn>
+                    <StyledColumn car white >PRICE</StyledColumn>
+                    <StyledColumn white>ACTION</StyledColumn>
                 </StyledItem>
                 <br/>
                 {CarList}

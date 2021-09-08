@@ -24,7 +24,7 @@ const carData = [{
     name:"2017 Toyota Highlander",
     location:"1944 Scrimba Ln Youngstown, OH 44481",
     price:"17,400",
-    liked: true  
+    liked: false  
     },{
     name:"2012 Toyota Tundra 4x4",
     location:"301 Fantasy Dr Beverly Hills, CA 90210",
