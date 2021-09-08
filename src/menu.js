@@ -21,16 +21,17 @@ const StyledItem = styled.div`
 
 function Menu(props){
 
+
+
     const MenuItems = props.List.map((item, i)=> (
 
-        
         <StyledItem key={i}><input type="checkbox"/>{item}</StyledItem>
         
         )
     )
 
     return(
-        <StyledMenu IsShown={props.IsShown}>
+        <StyledMenu IsShown={props.IsShown} >
             {MenuItems}
         </StyledMenu>
     )

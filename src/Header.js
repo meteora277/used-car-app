@@ -46,6 +46,7 @@ const StyledInput = styled.input`
     }
 `
 
+
 function Header(){
 
     const [showMenu, setShowMenu] = useState(false)
@@ -55,6 +56,7 @@ function Header(){
         setShowMenu(!showMenu)
 
     }
+    
 
     return(
         <StyledHeader>
@@ -66,6 +68,7 @@ function Header(){
                 <StyledInput type="text" placeholder="Search"></StyledInput>
                 <img style={{height:"30px"}}src={menuImage} onClick={displayMenu} alt="menu button"/>
                 <Menu IsShown={showMenu} List={["New Cars", "Used Cars", "Dealership", "For Sale By The Owner"]}/>
+                
             </StyledSearch>
         </StyledHeader>
     )
